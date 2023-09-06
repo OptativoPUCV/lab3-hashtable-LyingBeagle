@@ -125,9 +125,20 @@ Pair * firstMap(HashMap * map) {
 
 Pair * nextMap(HashMap * map) {
 
-    long keyActual = map->current;
+    long keyActual = (map->current + 1) % map->capacity;
 
-    
+    map->current = keyActual;
 
-    return map->buckets[keyActual+1];
+    if(map->buckets[keyActual] != NULL){
+        return map->buckets[keyActual];
+    }
+    else{
+
+        while(map->buckets[keyActual] == NULL){
+          keyActual = (keyActual + 1) % map->capacity;
+
+          if(map->buckets[keyActual] == firstMap(map)) return NULL;
+        }
+    }
+    return map->buckets[keyActual];
 }
