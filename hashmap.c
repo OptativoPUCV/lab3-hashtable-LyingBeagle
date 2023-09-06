@@ -140,5 +140,8 @@ Pair * nextMap(HashMap * map) {
           if(map->buckets[keyActual] == firstMap(map)) return NULL;
         }
     }
+
+    map->current = keyActual;
+  
     return map->buckets[keyActual];
 }
