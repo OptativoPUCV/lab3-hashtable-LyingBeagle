@@ -67,7 +67,7 @@ void enlarge(HashMap * map) {
     map->capacity *= 2;
     map->size = 0;
 
-    map->buckets = (Pair **)realloc(map->buckets, map->capacity * sizeof(Pair *));
+    map->buckets = (Pair **)malloc(map->capacity*sizeof(Pair *));
 
     if (map->buckets == NULL) {
         return;
