@@ -175,3 +175,8 @@ hashmap.c:68:28: error: ‘realloc’ called on pointer ‘map’ with nonzero o
 cc1: all warnings being treated as errors
 Compilation failed
 7fcb019
+Wed 06 Sep 2023 04:24:30 AM UTC: 
+ hashmap.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+ tests:  0|0
+f459236
