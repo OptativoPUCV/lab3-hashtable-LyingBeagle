@@ -94,9 +94,11 @@ Pair * searchMap(HashMap * map,  char * key) {
         if(map->buckets[keyBuscar] == NULL) return NULL;
     }
 
+    Pair* pairEncontrado = map->buckets[keyBuscar];
+  
     map->current = keyBuscar;
   
-    return map->buckets[keyBuscar];
+    return pairEncontrado;
 }
 
 Pair * firstMap(HashMap * map) {
