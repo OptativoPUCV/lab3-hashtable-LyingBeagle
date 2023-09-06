@@ -52,3 +52,21 @@ hashmap.c:100:1: error: control reaches end of non-void function [-Werror=return
 cc1: all warnings being treated as errors
 Compilation failed
 b51a2d1
+Wed 06 Sep 2023 03:37:34 AM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘searchMap’:
+hashmap.c:92:55: error: expected ‘)’ before ‘{’ token
+   92 |     while(!is_equal(key, map->buckets[keyBuscar]->key){
+      |          ~                                            ^
+      |                                                       )
+hashmap.c:100:1: error: expected expression before ‘}’ token
+  100 | }
+      | ^
+hashmap.c:100:1: error: control reaches end of non-void function [-Werror=return-type]
+  100 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+31276c9
