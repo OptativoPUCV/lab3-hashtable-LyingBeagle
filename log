@@ -164,3 +164,14 @@ Wed 06 Sep 2023 04:13:03 AM UTC:
  tests:  16|1
 total_score: 60/70
 47a4aa5
+Wed 06 Sep 2023 04:21:02 AM UTC: 
+ hashmap.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+In file included from test.c:4:
+hashmap.c: In function ‘enlarge’:
+hashmap.c:68:28: error: ‘realloc’ called on pointer ‘map’ with nonzero offset 16 [-Werror=free-nonheap-object]
+   68 |     map->buckets = (Pair**)realloc(&map->capacity,sizeof(Pair*));
+      |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+7fcb019
