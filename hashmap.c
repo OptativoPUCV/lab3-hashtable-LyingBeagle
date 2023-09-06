@@ -59,25 +59,40 @@ void insertMap(HashMap * map, char * key, void * value) {
 }
 
 void enlarge(HashMap * map) {
-    enlarge_called = 1; //no borrar (testing purposes)
+    enlarge_called = 1; // No borrar (para propósitos de prueba)
 
     Pair **tempBucket = map->buckets;
     long tempCapacity = map->capacity;
 
     map->capacity *= 2;
-
-    map->buckets = (Pair**)realloc(map->buckets, map->capacity * sizeof(Pair*));
-  
     map->size = 0;
+
+    map->buckets = (Pair **)realloc(map->buckets, map->capacity * sizeof(Pair *));
+
+    if (map->buckets == NULL) {
+        return;
+    }
+
+    for (long i = 0; i < map->capacity; i++) {
+        map->buckets[i] = NULL;
+    }
 
     for (long i = 0; i < tempCapacity; i++) {
         if (tempBucket[i] != NULL) {
-            insertMap(map, tempBucket[i]->key, tempBucket[i]->value);
+            long newIndex = hash(tempBucket[i]->key, map->capacity);
+            
+            while (map->buckets[newIndex] != NULL) {
+                newIndex = (newIndex + 1) % map->capacity;
+            }
+
+            map->buckets[newIndex] = tempBucket[i];
+            map->size++;
         }
     }
 
     free(tempBucket);
 }
+
 
 
 HashMap * createMap(long capacity) {
