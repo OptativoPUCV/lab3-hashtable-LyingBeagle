@@ -110,7 +110,7 @@ Pair * searchMap(HashMap * map,  char * key) {
 
 Pair * firstMap(HashMap * map) {
 
-    int i;
+    long i;
   
     for(i = 0; i < map->capacity; i++){
         if(map->buckets[i] != NULL) break;
@@ -125,7 +125,9 @@ Pair * firstMap(HashMap * map) {
 
 Pair * nextMap(HashMap * map) {
 
+    long keyActual = map->current;
+
     
 
-    return NULL;
+    return map->buckets[keyActual+1];
 }
