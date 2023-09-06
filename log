@@ -25,3 +25,30 @@ Wed 06 Sep 2023 03:34:33 AM UTC:
  1 file changed, 3 insertions(+), 1 deletion(-)
  tests:  0|0
 5d7436a
+Wed 06 Sep 2023 03:37:24 AM UTC: 
+ hashmap.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘searchMap’:
+hashmap.c:92:54: error: expected ‘)’ before ‘{’ token
+   92 |     while(!is_equal(key, map->buckets[keyBuscar]->key{
+      |                    ~                                 ^
+      |                                                      )
+hashmap.c:99:36: error: expected ‘)’ before ‘}’ token
+   99 |     return map->buckets[keyBuscar];
+      |                                    ^
+      |                                    )
+  100 | }
+      | ~                                   
+hashmap.c:92:10: note: to match this ‘(’
+   92 |     while(!is_equal(key, map->buckets[keyBuscar]->key{
+      |          ^
+hashmap.c:100:1: error: expected expression before ‘}’ token
+  100 | }
+      | ^
+hashmap.c:100:1: error: control reaches end of non-void function [-Werror=return-type]
+  100 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+b51a2d1

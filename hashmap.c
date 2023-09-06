@@ -89,16 +89,14 @@ Pair * searchMap(HashMap * map,  char * key) {
 
     long keyBuscar = hash(key,map->capacity);
 
-    while(!is_equal(key, (char*)keyBuscar)){
+    while(!is_equal(key, map->buckets[keyBuscar]->key{
         keyBuscar = (keyBuscar + 1) % map->capacity;
         if(map->buckets[keyBuscar] == NULL) return NULL;
     }
 
-    Pair* pairEncontrado = map->buckets[keyBuscar];
-  
     map->current = keyBuscar;
   
-    return pairEncontrado;
+    return map->buckets[keyBuscar];
 }
 
 Pair * firstMap(HashMap * map) {
