@@ -43,8 +43,12 @@ void insertMap(HashMap * map, char * key, void * value) {
 
     long hashKey = hash(key,map->capacity);
 
+    int i = 0;
+  
     while(map->buckets[hashKey] != NULL){
         hashKey = (hashKey + 1) % map->capacity;
+        if(i == map->capacity) return;
+        i++;
     }
 
     Pair* newPair = (Pair*)malloc(sizeof(Pair));
@@ -73,13 +77,11 @@ void enlarge(HashMap * map) {
         return;
     }
 
-  
     for (long i = 0; i < tempCapacity; i++) {
         if(tempBucket[i] != NULL){
             insertMap(map, tempBucket[i]->key, tempBucket[i]->value);
         }
     }
-
     free(tempBucket);
 }
 
